@@ -1,0 +1,19 @@
+.movie__box {
+  margin-bottom: 30px;
+}
+
+.movie__box img {
+  width: 200px;
+}
+
+.movie__data .movie__title {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
+.movie__data .movie__year {
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+}

@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+  padding: 0;
+  background-color: #1e1e1e;
+  color: white;
+  height: 100%;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(8, 230px);
+}
