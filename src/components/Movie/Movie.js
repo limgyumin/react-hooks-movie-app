@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./Movie.css";
 
 const sliceText = (string, maxLen) => {
@@ -12,13 +13,26 @@ const sliceText = (string, maxLen) => {
 
 const Movie = ({ id, year, title, summary, poster, genres }) => {
   return (
-    <div className="movie__box">
-      <img src={poster} alt={title} title={title} />
-      <div className="movie__data">
-        <h1 className="movie__title">{sliceText(title, 12)}</h1>
-        <h3 className="movie__year">{year}</h3>
+    <Link
+      to={{
+        pathname: `/movie/${id}`,
+        state: {
+          year,
+          title,
+          summary,
+          poster,
+          genres,
+        },
+      }}
+    >
+      <div className="movie__box">
+        <img src={poster} alt={title} title={title} />
+        <div className="movie__data">
+          <h1 className="movie__title">{sliceText(title, 12)}</h1>
+          <h3 className="movie__year">{year}</h3>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

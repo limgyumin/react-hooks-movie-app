@@ -1,5 +1,9 @@
 .movie__box {
-  margin-bottom: 30px;
+  margin: 14px;
+}
+
+.movie__box .movie__data .movie__title {
+  text-decoration: none;
 }
 
 .movie__box img {
