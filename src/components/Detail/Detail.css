@@ -22,6 +22,14 @@ ul {
   margin: 0;
 }
 
+.detail__text .detail__genre {
+  display: flex;
+}
+
+.genre__genres {
+  margin-right: 10px;
+}
+
 .detail__text {
   width: 40%;
 }

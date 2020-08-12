@@ -7,11 +7,13 @@ const Detail = (props) => {
     history,
     location: { state },
   } = props;
+
   useEffect(() => {
     if (state === undefined) {
       history.push("/");
     }
   }, []);
+
   return (
     <div className="detail__box">
       <div className="detail__img">
@@ -33,7 +35,7 @@ const Detail = (props) => {
           <h1 className="detail__title">{state.title}</h1>
           <h4 className="detail__year">{state.year}</h4>
           <ul className="detail__genre">
-            {[state.genres].map((genre, index) => (
+            {state.genres.map((genre, index) => (
               <li key={index} className="genre__genres">
                 {genre}
               </li>
