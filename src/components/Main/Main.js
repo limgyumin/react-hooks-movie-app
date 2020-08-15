@@ -6,7 +6,9 @@ import axios from "axios";
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState();
+  const [movie, setMovie] = useState();
+  const [search, setSearch] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   const getMovieAPI = async () => {
     const {
@@ -14,7 +16,7 @@ const Main = () => {
         data: { movies },
       },
     } = await axios.get("https://yts-proxy.now.sh/list_movies.json");
-    setMovies(movies);
+    setMovie(movies);
     setLoading(false);
   };
 
@@ -22,13 +24,28 @@ const Main = () => {
     getMovieAPI();
   }, []);
 
+  useEffect(() => {
+    if (movie !== undefined && movie !== null) {
+      setFilteredMovies(
+        movie.filter((movie) => {
+          return movie.title.toLowerCase().includes(search.toLowerCase());
+        })
+      );
+    }
+  }, [search, movie]);
+
   return (
     <section className="container">
       {loading ? (
         <Loading />
       ) : (
         <div className="movies">
-          {movies.map((movie, index) => (
+          <input
+            type="text"
+            placeholder="Search With Movie Name..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          {filteredMovies.map((movie, index) => (
             <Movie
               key={index}
               id={movie.id}
