@@ -3,6 +3,7 @@ import Loading from "../Loading";
 import Movie from "../Movie";
 import "./Main.css";
 import axios from "axios";
+import Search from "../Search";
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
@@ -39,23 +40,21 @@ const Main = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="movies">
-          <input
-            type="text"
-            placeholder="Search With Movie Name..."
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          {filteredMovies.map((movie, index) => (
-            <Movie
-              key={index}
-              id={movie.id}
-              year={movie.year}
-              title={movie.title}
-              summary={movie.summary}
-              poster={movie.medium_cover_image}
-              genres={movie.genres}
-            />
-          ))}
+        <div>
+          <Search setSearch={setSearch} />
+          <div className="movies">
+            {filteredMovies.map((movie, index) => (
+              <Movie
+                key={index}
+                id={movie.id}
+                year={movie.year}
+                title={movie.title}
+                summary={movie.summary}
+                poster={movie.medium_cover_image}
+                genres={movie.genres}
+              />
+            ))}
+          </div>
         </div>
       )}
     </section>
